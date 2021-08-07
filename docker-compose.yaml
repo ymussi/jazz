@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  # Application
+  app:
+    container_name: jazz_web_docker
+    hostname: jazz_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUN_ENVIRONMENT: docker
+    restart: on-failure
+    environment:
+      FLASK_DEBUG: 1
+      TZ: "America/Sao_Paulo"
+      BAZOOKA_CHANNEL_ID_: ""
+      SLACK_TOKEN_: ""
+    volumes:
+      - .:/app/jazz
+    # links:
+    #   - db
+    ports:
+      - 5000:5000
+    # command: ["wait-for-it", "db:27017", "--"]
+
+  # Database image
+  # db:
+  #   container_name: jazz_mongo_db
+  #   hostname: jazz_db
+  #   image: mongo
+  #   ports:
+  #     - 27017:27017
+
+networks:
+  default:
+    external:
+      name: madeiramadeira
