@@ -21,7 +21,7 @@ services:
     # links:
     #   - db
     ports:
-      - 5000:5000
+      - 5001:5001
     # command: ["wait-for-it", "db:27017", "--"]
 
   # Database image
