@@ -35,4 +35,4 @@ services:
 networks:
   default:
     external:
-      name: madeiramadeira
+      name: teste_jazz
